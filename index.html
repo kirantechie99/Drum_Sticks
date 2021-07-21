@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum Sticks</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0px;
+            background-color: #f0c929;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .title {
+            font-family: 'Press Start 2P', cursive;
+            color: #ac0d0d;
+            text-align: center;
+            font-size: 75px;
+            padding: 25px;
+            margin: 35px;
+        }
+
+        .drums {
+            text-align: center;
+        }
+
+        .drum {
+            /* background-color: #fbe6c2; */
+            color: black;
+            background-color: white;
+            font-size: 150px;
+            font-weight: bolder;
+            border-radius: 8px;
+            border: 10px solid #f48b29;
+            padding: 0px 40px;
+            margin: 120px 15px;
+        }
+
+        .love {
+            color: white;
+            font-size: 20px;
+            /* font-family:'Times New Roman', Times, serif; */
+            text-align: center;
+        }
+
+        #a {
+            background-image: url("images/crash.png") ;
+        }
+
+        #s {
+            background-image: url("images/kick.png") ;
+        }
+
+        #d {
+            background-image: url("images/snare.png") ;
+        }
+
+        #f {
+            background-image: url("images/tom1.png") 
+        }
+
+        #l {
+            background-image: url("images/tom2.png") ;
+        }
+
+        #k {
+            background-image: url("images/tom3.png") ;
+        }
+
+        .pressed{
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="maincontainer">
+        <h2 class="title">Drum 🥁 Sticks </h2>
+        <div class="drums">
+            <button class="drum" id="a">a</button>
+            <button class="drum" id="s">s</button>
+            <button class="drum" id="d">d</button>
+            <button class="drum" id="f">f</button>
+            <button class="drum" id="l">l</button>
+            <button class="drum" id="k">k</button>
+        </div>
+    </div>
+<script>
+let noofdrums = 6;
+
+for(let i=0; i<noofdrums; i++){
+    document.getElementsByClassName('drum')[i].addEventListener('click', function(){
+        let btnclicked = this.innerHTML;
+        makesound(btnclicked);  
+        clicked(btnclicked);  
+    })
+}
+
+document.addEventListener("keypress",function(event){
+    makesound(event.key);
+    clicked(event.key);
+})
+
+function makesound(key){
+    switch(key){
+            case "a":
+                let sw = new Audio('sounds/crash.mp3');
+                sw.play();
+                break;
+            case "s":
+                let sa = new Audio('sounds/kick-bass.mp3');
+                sa.play();
+                break;
+            case "d":
+                let ss = new Audio('sounds/snare.mp3');
+                ss.play();
+                break;
+            case "f":
+                let sd = new Audio('sounds/tom-1.mp3');
+                sd.play()
+                break;
+            case "l":
+                let sk = new Audio('sounds/tom-2.mp3');
+                sk.play();
+                break;
+            case "k":
+                let sl = new Audio('sounds/tom-3.mp3');
+                sl.play();
+                break;
+        }
+}
+
+function clicked(key){
+    let clickedbtn = document.getElementById(key);
+    clickedbtn.classList.add("pressed");
+    setTimeout(function(){
+        clickedbtn.classList.remove("pressed");
+    },10)
+}
+</script>
+</body>
+
+</html>
